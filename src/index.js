@@ -10,8 +10,8 @@ root.render(
   <React.StrictMode>
     <Router>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/lista" element={<List />} />
+          <Route exact path="/lista" element={<List />} />
+          <Route exact path="/" element={<HomePage />} />
         </Routes>
       </Router>
     

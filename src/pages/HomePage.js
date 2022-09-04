@@ -1,6 +1,6 @@
 import axios from "axios";
 import {useEffect, useState} from 'react';
-import { Tooltip } from '@mui/material';
+import { Tooltip, CircularProgress } from '@mui/material';
 import ListIcon from '@mui/icons-material/List';
 import { useNavigate } from "react-router-dom";
 function daysToNextShoppingSunday(TodayDate, FinishDate) {
@@ -16,39 +16,33 @@ function HomePage() {
   let todayDate = new Date();
   let today = days[todayDate.getDay()];
   const [sundayapi, setApi] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const fetchApi = async () => {
     const response = await axios(`https://shopping-sunday-api.herokuapp.com/`);
     setApi(response.data);
+    setIsLoading(false);
     };
     useEffect(() => {
+      setIsLoading(true);
       fetchApi();
     }, []);
     if(today === "Niedziela"){
-      today = todayDate.toISOString().slice(0,10) === sundayapi?.nearest_shopping_sunday ? `Niedziela Handlowa` : `Niedziela Niehandlowa`
+      today = todayDate.toISOString().slice(0,10) === sundayapi?.nearest_shopping_sunday ? (<p className="text-5xl sm:text-8xl pb-2 text-green-500 dark:text-green-500 font-SFRounded text-center">Niedziela Handlowa</p>) : (<p className="text-5xl sm:text-8xl pb-2 text-red-500 dark:text-red-500 font-SFRounded text-center">Niedziela Niehandlowa</p>)
     }
     let RemainingDaystoNextShoppingSunday = daysToNextShoppingSunday(todayDate, sundayapi?.nearest_shopping_sunday);
   return (
   <div className="App bg-white dark:bg-slate-800">
       <div className="flex justify-center flex-col items-center min-h-screen">
         <p className="text-2xl sm:text-4xl text-black pb-2 dark:text-white font-SFRounded">Dzisiaj jest:</p>
-        <p idname="todayDay" className="text-5xl sm:text-8xl pb-2 text-black dark:text-white font-SFRounded">{today}</p>
+        {today}
         <Tooltip arrow title={`Za ${RemainingDaystoNextShoppingSunday}dni`}>
-          <p className="text-base sm:text-xl text-black dark:text-white font-SFRounded">Nastepna niedziela handlowa: <strong>{new Date(sundayapi?.nearest_shopping_sunday).toLocaleString([], { year: 'numeric', month: '2-digit', day: '2-digit' })}</strong></p>
+         {isLoading ? (<p className="text-base sm:text-xl text-black dark:text-white font-SFRounded">Nastepna niedziela handlowa: <CircularProgress /> </p>) : (<p className="text-base sm:text-xl text-black dark:text-white font-SFRounded">Nastepna niedziela handlowa: <strong>{new Date(sundayapi?.nearest_shopping_sunday).toLocaleString([], { year: 'numeric', month: '2-digit', day: '2-digit' })}</strong></p>)} 
         </Tooltip>
         <div idname="icons" className="pt-6">
           <Tooltip title={`Lista Niedziel Handlowych`}>
             <ListIcon onClick={() => {navigate(`/lista`)}}className="text-black dark:text-white border-2 p-1 rounded-full mx-1" fontSize="large" ></ListIcon> 
           </Tooltip>
-          {/* <Tooltip title={`Lista Niedziel Handlowych`}>
-            <ListIcon onClick={() => {navigate(`/list`)}}className="text-white border p-1 rounded-full mx-1" fontSize="large" ></ListIcon> 
-          </Tooltip> */}
         </div>
-        {/* <div className="footer">
-          <div idname="visitors" className=" ml-5 py-2 px-10 border rounded-full w-0 max-w-full flex justify-center items-center gap-1">
-          
-            <p className="text-white font-SFRounded">14</p>
-          </div>
-        </div> */}
       </div>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2771488160429007"
      crossorigin="anonymous"></script>
