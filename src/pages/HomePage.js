@@ -34,7 +34,7 @@ function HomePage() {
   <div className="App bg-white dark:bg-slate-800">
       <div className="flex justify-center flex-col items-center min-h-screen">
         <p className="text-2xl sm:text-4xl text-black pb-2 dark:text-white font-SFRounded">Dzisiaj jest:</p>
-        {today}
+        <p className="text-5xl sm:text-8xl pb-2 text-black dark:text-white font-SFRounded text-center">{today}</p>
         <Tooltip arrow title={`Za ${RemainingDaystoNextShoppingSunday}dni`}>
          {isLoading ? (<p className="text-base sm:text-xl text-black dark:text-white font-SFRounded">Nastepna niedziela handlowa: <CircularProgress /> </p>) : (<p className="text-base sm:text-xl text-black dark:text-white font-SFRounded">Nastepna niedziela handlowa: <strong>{new Date(sundayapi?.nearest_shopping_sunday).toLocaleString([], { year: 'numeric', month: '2-digit', day: '2-digit' })}</strong></p>)} 
         </Tooltip>
