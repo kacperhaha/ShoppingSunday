@@ -31,8 +31,8 @@ function HomePage() {
     }
     let RemainingDaystoNextShoppingSunday = daysToNextShoppingSunday(todayDate, sundayapi?.nearest_shopping_sunday);
   return (
-  <div className="App bg-white dark:bg-slate-800">
-      <div className="flex justify-center flex-col items-center min-h-screen">
+  <div className="App bg-white dark:bg-slate-800 h-full">
+      <div className="flex justify-center flex-col items-center h-full">
         <p className="text-2xl sm:text-4xl text-black pb-2 dark:text-white font-SFRounded">Dzisiaj jest:</p>
         <p className="text-5xl sm:text-8xl pb-2 text-black dark:text-white font-SFRounded text-center">{today}</p>
         <Tooltip arrow title={`Za ${RemainingDaystoNextShoppingSunday}dni`}>
