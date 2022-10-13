@@ -16,7 +16,7 @@ function HomePage() {
   let todayDate = new Date();
   let today = days[todayDate.getDay()];
   const [sundayapi, setApi] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIslLoading] = useState(false);
   const fetchApi = async () => {
     const response = await axios(`https://shopping-sunday-api.herokuapp.com/`);
     setApi(response.data);
@@ -44,16 +44,6 @@ function HomePage() {
           </Tooltip>
         </div>
       </div>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2771488160429007"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     data-ad-client="ca-pub-2771488160429007"
-     data-ad-slot="1698896109"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
   </div>
 
   );
