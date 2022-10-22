@@ -16,7 +16,7 @@ function HomePage() {
   let todayDate = new Date();
   let today = days[todayDate.getDay()];
   const [sundayapi, setApi] = useState([]);
-  const [isLoading, setIslLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const fetchApi = async () => {
     const response = await axios(`https://shopping-sunday-api.herokuapp.com/`);
     setApi(response.data);
