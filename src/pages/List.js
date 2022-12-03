@@ -14,7 +14,7 @@ const List = () => {
   const [sundaylistapi, setApi] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const fetchApi = async () => {
-    const response = await axios(`https://shopping-sunday-api.herokuapp.com/list`);
+    const response = await axios(`https://shopping-sunday.onrender.com/list`);
     setApi(response.data);
     setIsLoading(false);
     };
