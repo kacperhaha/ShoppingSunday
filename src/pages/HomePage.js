@@ -18,7 +18,7 @@ function HomePage() {
   const [sundayapi, setApi] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const fetchApi = async () => {
-    const response = await axios(`https://shopping-sunday-api.herokuapp.com/`);
+    const response = await axios(`https://shopping-sunday.onrender.com/`);
     setApi(response.data);
     setIsLoading(false);
     };
