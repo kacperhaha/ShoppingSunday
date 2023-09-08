@@ -5,7 +5,6 @@ export default function daysToNextShoppingSunday(TodayDate, FinishDate) {
     let hour = Math.floor(diff / 1000 / 60 / 60);
     let days = Math.floor(hour / 24);
     let timeString = "";
-    console.log(days);
     if (hour > 24) {
         let days = Math.floor(hour / 24);
         timeString += days + "dni ";

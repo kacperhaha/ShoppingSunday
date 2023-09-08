@@ -5,7 +5,7 @@ import UndoIcon from '@mui/icons-material/Undo';
 import { useNavigate } from "react-router-dom";
 import SundaysList from "../components/SundaysList";
 function List() {
-  const apiUrl = 'https://shopping-sunday-api.fly.dev/';
+  const apiUrl = 'https://shopping-sunday-api.fly.dev/list';
   const [sundaylistapi, setApi] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const fetchApi = async () => {
